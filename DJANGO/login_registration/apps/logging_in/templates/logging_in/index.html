@@ -1,0 +1,76 @@
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>L O G I N . R E G I S T R A T I O N </title>
+        {% load static %}
+      <link rel="stylesheet" href="{% static 'logging_in/css/log.css' %}" media="screen" title="no title"  charset="utf-8">
+      </head>
+    <body>
+        <div class = "wrapper">
+            <h3>REGISTRATION</h3>
+            <p>Please enter the following information</p>
+            <form action="/adduser" method="post">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        <label for="first_name">First Name:</label>
+                        <input type='text' name='first_name'>
+                    </li>
+                    <li>
+                        <label for="last_name">Last Name:</label>
+                        <input type='text' name='last_name'>
+                    </li>
+                    <li>
+                        <label for="email">Email:</label>
+                        <input type='text' name='email'>
+                    </li>
+                    <li>
+                        <label for="password">Password:</label>
+                        <input type='text' name='password'>
+                    </li>
+                    <li>
+                        <label for="confirm">Confirm Password:</label>
+                        <input type='text' name='confirm'>
+                    </li>
+                    <li>
+                    <input type="submit" class="submitbutton" name="submit" value="register user">
+                    </li>
+                </ul>
+            </form>
+               {% if messages %}
+            <section class="messages">
+                {% for message in messages %}
+                <p>{{ message }}</9>
+                {% endfor %}
+            </section>
+            {% endif %}
+        </div>
+        <div class = "wrapper">
+            <h3>LOGIN</h3>
+            <p>Please enter the following information</p>
+            <form action="/login" method="post">
+                {% csrf_token %}
+                <ul>
+                    <li>
+                        <label for="email">Email:</label>
+                        <input type='text' name='email'>
+                    </li>
+                    <li>
+                        <label for="password">Password:</label>
+                        <input type='text' name='password'>
+                    </li>
+                    <li>
+                    <input type="submit" class="submitbutton" name="submit" value="log in">
+                    </li>
+                </ul>
+            </form>
+               {% if messages %}
+            <section class="messages">
+                {% for message in messages %}
+                <p>{{ message }}</9>
+                {% endfor %}
+            </section>
+            {% endif %}
+        </div>
+    </body>
+</html>
